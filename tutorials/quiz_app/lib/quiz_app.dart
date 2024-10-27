@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/screens/questions_screen.dart';
+import 'package:quiz_app/screens/results_screen.dart';
 import '../screens/main_screen.dart';
 
 class QuizApp extends StatefulWidget{
@@ -28,8 +29,8 @@ class _QuizAppState extends State<QuizApp>{
     //Stop iterating as soon as we don't have any questions left
     if(selectedAnswers.length == questions.length){
       setState(() {
+        activeScreen = ResultsScreen(chosenAnswers: selectedAnswers);
         selectedAnswers = [];
-        activeScreen = MainScreen(switchScreen);
       });
     }
   }

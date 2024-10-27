@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quiz_app/widgets/buttons/quiz_button.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen(this.startQuiz,{super.key});
@@ -23,20 +24,10 @@ class MainScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 25),
-            ElevatedButton.icon(
-                onPressed: startQuiz,
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.deepOrange,
-                  textStyle: const TextStyle(fontSize: 20),
-                ),
-                icon: const Icon(Icons.arrow_right_alt),
-                label: Text(
-                  'Start Quiz',
-                  style: GoogleFonts.lato(
-                    fontWeight: FontWeight.bold
-                  ),
-                )
+            QuizButton(
+                buttonText: 'Start Quiz',
+                onClick: startQuiz,buttonIcon:
+                const Icon(Icons.arrow_right_alt)
             ),
           ],
         ),
