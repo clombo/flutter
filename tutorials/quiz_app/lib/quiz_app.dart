@@ -11,6 +11,8 @@ class QuizApp extends StatefulWidget{
   State<QuizApp> createState() => _QuizAppState();
 }
 
+//_ means it is private
+//You can add _ to properties as well to make it private
 class _QuizAppState extends State<QuizApp>{
   //Answers selected stored here because this state has access to the necessary screens.
   List<String> selectedAnswers = [];
@@ -23,14 +25,21 @@ class _QuizAppState extends State<QuizApp>{
     });
   }
 
+  void restartQuiz(){
+    setState(() {
+      selectedAnswers = [];
+      activeScreen = QuestionsScreen(onSelectAnswer: addSelectedAnswer);
+    });
+  }
+
   void addSelectedAnswer(String answer){
     selectedAnswers.add(answer);
 
     //Stop iterating as soon as we don't have any questions left
     if(selectedAnswers.length == questions.length){
       setState(() {
-        activeScreen = ResultsScreen(chosenAnswers: selectedAnswers);
-        selectedAnswers = [];
+        activeScreen = ResultsScreen(chosenAnswers: selectedAnswers, onRestart: restartQuiz);
+        //selectedAnswers = [];
       });
     }
   }
